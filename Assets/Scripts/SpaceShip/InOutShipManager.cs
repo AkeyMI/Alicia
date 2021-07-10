@@ -58,6 +58,10 @@ public class InOutShipManager : MonoBehaviour
         {
             btnGoOut.gameObject.SetActive(true);
         }
+        else
+        {
+            btnGoOut.gameObject.SetActive(false);
+        }
 
         if(ShipIsClose() && spaceShip.ShipOnGround)
         {

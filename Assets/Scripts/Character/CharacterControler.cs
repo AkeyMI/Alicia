@@ -6,7 +6,7 @@ public class CharacterControler : MonoBehaviour
 {
     [SerializeField] float speed = 5f;
     [SerializeField] float rotationSpeed = 2f;
-    [SerializeField] float shipMinimumClose = 1f;
+    //[SerializeField] float shipMinimumClose = 1f;
 
     private Vector3 rotationInput;
     private Vector3 rotationVelocity;
@@ -29,28 +29,30 @@ public class CharacterControler : MonoBehaviour
 
         CharacterMovement();
 
-        if(Input.GetKey(KeyCode.E) && ShipIsClose())
-        {
-            GoIn();
-        }
+        //if(Input.GetKey(KeyCode.E) && ShipIsClose())
+        //{
+        //    GoIn();
+        //}
     }
 
-    private void GoIn()
+    public void GoIn()
     {
+        GravityManager.Instance.QuitAliceGravity();
+
         Destroy(this.gameObject);
     }
 
-    private bool ShipIsClose()
-    {
-        float distance = Vector3.Distance(FindObjectOfType<SpaceShipController>().transform.position, this.transform.position);
+    //private bool ShipIsClose()
+    //{
+    //    float distance = Vector3.Distance(FindObjectOfType<SpaceShipController>().transform.position, this.transform.position);
 
-        if(distance <= shipMinimumClose)
-        {
-            return true;
-        }
+    //    if(distance <= shipMinimumClose)
+    //    {
+    //        return true;
+    //    }
 
-        return false;
-    }
+    //    return false;
+    //}
 
     private void CharacterMovement()
     {

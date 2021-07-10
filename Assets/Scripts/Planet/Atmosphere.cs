@@ -25,10 +25,5 @@ public class Atmosphere : MonoBehaviour
         {
             GravityManager.Instance.SetZeroGravity();
         }
-
-        if (other.CompareTag("Player"))
-        {
-
-        }
     }
 }

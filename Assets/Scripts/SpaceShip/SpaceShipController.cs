@@ -65,12 +65,18 @@ public class SpaceShipController : MonoBehaviour
         rb.freezeRotation = true;
     }
 
+    public void ResetConstraints()
+    {
+        rb.constraints = RigidbodyConstraints.None;
+        rb.freezeRotation = true;
+    }
+
     private void SpaceRotation()
     {
         float tiltX = Input.GetAxisRaw("Horizontal");
         float tiltZ = Input.GetAxisRaw("Vertical");
 
-        rotationInput = new Vector3(tiltZ, 0f, tiltX);
+        rotationInput = new Vector3(tiltZ, 0f, -tiltX);
         rotationVelocity = rotationInput.normalized * tiltingForce;
 
         if(!Mathf.Approximately(tiltX, 0f) || !Mathf.Approximately(tiltZ, 0f))

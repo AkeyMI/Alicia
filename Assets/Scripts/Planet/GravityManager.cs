@@ -11,6 +11,7 @@ public class GravityManager : MonoBehaviour
     private GameObject alicePrefab = default;
 
     private bool isOnPlanet = false;
+    //private bool aliceIsOut = false;
 
     public static GravityManager Instance;
 
@@ -40,7 +41,7 @@ public class GravityManager : MonoBehaviour
 
     private void Update()
     {
-        if(isOnPlanet)
+        if(isOnPlanet && alicePrefab == null)
         {
             ShipGravity();
         }
@@ -77,6 +78,12 @@ public class GravityManager : MonoBehaviour
 
     public void SetAliceGravity(GameObject alice)
     {
+        //aliceIsOut = true;
         alicePrefab = alice;
+    }
+
+    public void QuitAliceGravity()
+    {
+        alicePrefab = null;
     }
 }

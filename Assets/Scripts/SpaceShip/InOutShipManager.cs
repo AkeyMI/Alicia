@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class InOutShipManager : MonoBehaviour
 {
+    [SerializeField] float shipMinimumClose = 1f;
     [SerializeField] Button goOutShipButton = default;
+    [SerializeField] Button goInShipButton = default;
 
     public bool IsAliceOut => isAliceOut;
 
@@ -14,6 +16,7 @@ public class InOutShipManager : MonoBehaviour
     private SpaceShipController spaceShip;
 
     private Button btnGoOut;
+    private Button btnGoIn;
 
 
     public static InOutShipManager Instance;
@@ -42,6 +45,9 @@ public class InOutShipManager : MonoBehaviour
         btnGoOut = goOutShipButton.GetComponent<Button>();
         btnGoOut.onClick.AddListener(GoOut);
         btnGoOut.gameObject.SetActive(false);
+        btnGoIn = goInShipButton.GetComponent<Button>();
+        btnGoIn.onClick.AddListener(GoIn);
+        btnGoIn.gameObject.SetActive(false);
 
         spaceShip = FindObjectOfType<SpaceShipController>();
     }
@@ -51,6 +57,15 @@ public class InOutShipManager : MonoBehaviour
         if(spaceShip.ShipOnGround && !isAliceOut)
         {
             btnGoOut.gameObject.SetActive(true);
+        }
+
+        if(ShipIsClose() && spaceShip.ShipOnGround)
+        {
+            btnGoIn.gameObject.SetActive(true);
+        }
+        else
+        {
+            btnGoIn.gameObject.SetActive(false);
         }
     }
 
@@ -65,6 +80,28 @@ public class InOutShipManager : MonoBehaviour
 
     public void GoIn()
     {
+        isAliceOut = false;
 
+        FindObjectOfType<CharacterControler>().GoIn();
+
+        spaceShip.ResetConstraints();
+
+        btnGoIn.gameObject.SetActive(false);
+    }
+
+    private bool ShipIsClose()
+    {
+        CharacterControler alice = FindObjectOfType<CharacterControler>();
+
+        if (alice == null) return false;
+
+        float distance = Vector3.Distance(spaceShip.transform.position, FindObjectOfType<CharacterControler>().transform.position);
+
+        if (distance <= shipMinimumClose)
+        {
+            return true;
+        }
+
+        return false;
     }
 }

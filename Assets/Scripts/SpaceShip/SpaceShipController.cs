@@ -7,9 +7,15 @@ public class SpaceShipController : MonoBehaviour
 {
     [SerializeField] float thrusterForce = 10f;
     [SerializeField] float tiltingForce = 10f;
+    [SerializeField] GameObject alice = default;
+    [SerializeField] GameObject spawnAlice = default;
 
     private Vector3 rotationInput;
     private Vector3 rotationVelocity;
+
+    private bool shipOnGround = false;
+
+    public bool ShipOnGround => shipOnGround;
 
     private Rigidbody rb;
 
@@ -20,25 +26,43 @@ public class SpaceShipController : MonoBehaviour
 
     private void Update()
     {
-        FeetOnTheGround();
+        if (!InOutShipManager.Instance.IsAliceOut)
+        {
+            FeetOnTheGround();
+        }
 
         if(!GravityManager.Instance.IsOnPLanet)
         {
             SpaceRotation();
         }
+
+        //if(Input.GetKey(KeyCode.E) && shipOnGround && !InOutShipManager.Instance.IsAliceOut)
+        //{
+        //    GoOut();
+        //}
     }
 
     private void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.U))
+        if (!InOutShipManager.Instance.IsAliceOut)
         {
-            UpForce();
-        }
+            if (Input.GetKey(KeyCode.U))
+            {
+                UpForce();
+            }
 
-        if(Input.GetKey(KeyCode.J))
-        {
-            DownForce();
+            if (Input.GetKey(KeyCode.J))
+            {
+                DownForce();
+            }
         }
+    }
+
+    public void GoOut()
+    {
+        Instantiate(alice, spawnAlice.transform.position, Quaternion.identity);
+        rb.constraints = RigidbodyConstraints.FreezePosition;
+        rb.freezeRotation = true;
     }
 
     private void SpaceRotation()
@@ -70,5 +94,10 @@ public class SpaceShipController : MonoBehaviour
     private void FeetOnTheGround()
     {
         transform.rotation = Quaternion.FromToRotation(transform.up, -Physics.gravity) * transform.rotation;
+    }
+
+    public void IsOnGround(bool ground)
+    {
+        shipOnGround = ground;
     }
 }

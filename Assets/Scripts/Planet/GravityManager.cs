@@ -8,6 +8,7 @@ public class GravityManager : MonoBehaviour
 
     private GameObject planet = default;
     private GameObject spaceShip = default;
+    private GameObject alicePrefab = default;
 
     private bool isOnPlanet = false;
 
@@ -41,13 +42,23 @@ public class GravityManager : MonoBehaviour
     {
         if(isOnPlanet)
         {
-            Gravity();
+            ShipGravity();
+        }
+
+        if(alicePrefab != null)
+        {
+            AliceGravity();
         }
     }
 
-    private void Gravity()
+    private void ShipGravity()
     {
         Physics.gravity = planet.transform.position - spaceShip.transform.position;
+    }
+
+    private void AliceGravity()
+    {
+        Physics.gravity = planet.transform.position - alicePrefab.transform.position;
     }
 
     public void SetGravity(GameObject planetGravity, GameObject spaceShipGravity)
@@ -62,5 +73,10 @@ public class GravityManager : MonoBehaviour
     {
         isOnPlanet = false;
         Physics.gravity = Vector3.zero;
+    }
+
+    public void SetAliceGravity(GameObject alice)
+    {
+        alicePrefab = alice;
     }
 }

@@ -6,6 +6,7 @@ public class CharacterControler : MonoBehaviour
 {
     [SerializeField] float speed = 5f;
     [SerializeField] float rotationSpeed = 2f;
+    [SerializeField] float shipMinimumClose = 1f;
 
     private Vector3 rotationInput;
     private Vector3 rotationVelocity;
@@ -27,6 +28,28 @@ public class CharacterControler : MonoBehaviour
         rotationVelocity = rotationInput * rotationSpeed;
 
         CharacterMovement();
+
+        if(Input.GetKey(KeyCode.E) && ShipIsClose())
+        {
+            GoIn();
+        }
+    }
+
+    private void GoIn()
+    {
+        Destroy(this.gameObject);
+    }
+
+    private bool ShipIsClose()
+    {
+        float distance = Vector3.Distance(FindObjectOfType<SpaceShipController>().transform.position, this.transform.position);
+
+        if(distance <= shipMinimumClose)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     private void CharacterMovement()

@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MetalItem : MonoBehaviour, IInteractable
+public class BayasItem : MonoBehaviour, IInteractable
 {
-    [SerializeField] int usos = 3;
+    [SerializeField] int usos = 1;
 
     private int currentUsos = 0;
 
     public void Apply()
     {
         //Debug.Log("Se uso item");
-        InventoryManager.Instance.TakeMetal();
+        InventoryManager.Instance.EatBaya();
 
         Destroy(this.gameObject);
     }
@@ -21,7 +21,7 @@ public class MetalItem : MonoBehaviour, IInteractable
         currentUsos++;
         //Debug.Log(currentUsos);
 
-        if(currentUsos >= usos)
+        if (currentUsos >= usos)
         {
             Apply();
         }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MetalItem : MonoBehaviour, IInteractable
+public class AzufreItem : MonoBehaviour, IInteractable
 {
     [SerializeField] int usos = 3;
 
@@ -10,8 +10,7 @@ public class MetalItem : MonoBehaviour, IInteractable
 
     public void Apply()
     {
-        //Debug.Log("Se uso item");
-        InventoryManager.Instance.TakeMetal();
+        InventoryManager.Instance.TakeAzufre();
 
         Destroy(this.gameObject);
     }
@@ -21,7 +20,7 @@ public class MetalItem : MonoBehaviour, IInteractable
         currentUsos++;
         //Debug.Log(currentUsos);
 
-        if(currentUsos >= usos)
+        if (currentUsos >= usos)
         {
             Apply();
         }

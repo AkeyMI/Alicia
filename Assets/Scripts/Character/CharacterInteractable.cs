@@ -8,9 +8,10 @@ public class CharacterInteractable : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKey(KeyCode.E))
+        if(Input.GetKeyDown(KeyCode.E))
         {
             CheckInteractablesItems();
+            //Random.Range(0, 1);
         }
     }
 
@@ -22,7 +23,13 @@ public class CharacterInteractable : MonoBehaviour
         {
             if (hitCollider.CompareTag("Item"))
             {
-                hitCollider.GetComponent<IInteractable>().Apply();
+                Debug.Log("Entro");
+
+                int useOrNot = Random.Range(0, 2);
+                if(useOrNot > 0)
+                    InventoryManager.Instance.MinusBaya();
+
+                hitCollider.GetComponent<IInteractable>().OneUse();
             }
         }
     }

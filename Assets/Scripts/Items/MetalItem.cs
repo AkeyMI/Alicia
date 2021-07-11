@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class MetalItem : MonoBehaviour, IInteractable
 {
     [SerializeField] int usos = 3;
-    [SerializeField] Slider metalSlider = default;
+    //[SerializeField] Slider metalSlider = default;
 
     private int currentUsos = 0;
 
@@ -21,7 +21,7 @@ public class MetalItem : MonoBehaviour, IInteractable
     public void OneUse()
     {
         currentUsos++;
-        metalSlider.value = currentUsos;
+        //metalSlider.value = currentUsos;
         //Debug.Log(currentUsos);
 
         if(currentUsos >= usos)

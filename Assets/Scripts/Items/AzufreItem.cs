@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class AzufreItem : MonoBehaviour, IInteractable
 {
     [SerializeField] int usos = 3;
-    [SerializeField] Slider azufreSlider = default;
+    //[SerializeField] Slider azufreSlider = default;
 
     private int currentUsos = 0;
 
@@ -20,7 +20,7 @@ public class AzufreItem : MonoBehaviour, IInteractable
     public void OneUse()
     {
         currentUsos++;
-        azufreSlider.value = currentUsos;
+        //azufreSlider.value = currentUsos;
         //Debug.Log(currentUsos);
 
         if (currentUsos >= usos)

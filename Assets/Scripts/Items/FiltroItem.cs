@@ -7,7 +7,7 @@ public class FiltroItem : MonoBehaviour, IInteractable
 {
     [SerializeField] int usos = 1;
     [SerializeField] float segundosParaRecolectarInformacion = 1f;
-    [SerializeField] Slider filtroSlider = default;
+    //[SerializeField] Slider filtroSlider = default;
 
     private int currentUsos = 0;
 

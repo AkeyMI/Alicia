@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   usos: 3
+  hidrogeno: {fileID: 3919954939998912016}
+  bubble: {fileID: 8093703512838623417}
 --- !u!136 &3230981882735893184
 CapsuleCollider:
   m_ObjectHideFlags: 0

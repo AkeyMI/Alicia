@@ -48,6 +48,15 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        bayasText.text = currentBayas + "/" + bayas;
+        hidrogenoText.text = currentHidrogeno + "/" + maxItems;
+        azufreText.text = currentAzufre + "/" + maxItems;
+        metalText.text = currentMetal + "/" + maxItems;
+        semillaText.text = currentSemillas + "/" + semillas;
+    }
+
     public void TakeMetal()
     {
         if(currentMetal < maxItems)

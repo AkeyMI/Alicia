@@ -9,6 +9,7 @@ public class InOutShipManager : MonoBehaviour
     [SerializeField] Button goOutShipButton = default;
     [SerializeField] Button goInShipButton = default;
     [SerializeField] Slider palanca = default;
+    [SerializeField] Button openMenu = default;
 
     public bool IsAliceOut => isAliceOut;
 
@@ -91,6 +92,7 @@ public class InOutShipManager : MonoBehaviour
         CameraManager.Instance.ChangeCameraShipAndAlice();
 
         btnGoOut.gameObject.SetActive(false);
+        openMenu.gameObject.SetActive(true);
     }
 
     public void GoIn()
@@ -103,6 +105,7 @@ public class InOutShipManager : MonoBehaviour
         spaceShip.ResetConstraints();
 
         btnGoIn.gameObject.SetActive(false);
+        openMenu.gameObject.SetActive(false);
     }
 
     private bool ShipIsClose()

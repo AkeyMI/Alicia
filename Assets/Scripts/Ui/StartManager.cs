@@ -21,6 +21,7 @@ public class StartManager : MonoBehaviour
         //btnStart.image.sprite = buttonOn;
         imgStart.sprite = buttonOn;
 
-        SceneManager.LoadScene(1);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Raul_Planet");
     }
 }

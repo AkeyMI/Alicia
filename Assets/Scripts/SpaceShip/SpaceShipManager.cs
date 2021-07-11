@@ -40,6 +40,9 @@ public class SpaceShipManager : MonoBehaviour
     {
         currentFuel = 1;
         currentLife = 3;
+
+        fuelAmountText.text = currentFuel + "/" + fuel;
+        lifeAmountText.text = currentLife + "/" + life;
     }
 
     public void Damage(int amount)

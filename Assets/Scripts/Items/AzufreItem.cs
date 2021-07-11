@@ -20,8 +20,6 @@ public class AzufreItem : MonoBehaviour, IInteractable
     public void OneUse()
     {
         currentUsos++;
-        //azufreSlider.value = currentUsos;
-        //Debug.Log(currentUsos);
 
         if (currentUsos >= usos)
         {

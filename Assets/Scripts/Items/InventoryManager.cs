@@ -1,17 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
     [SerializeField] Slider slider = default;
+    //[SerializeField] int hidrogeno = 5;
+    //[SerializeField] int metal = 5;
+    //[SerializeField] int azufre = 5;
+    [SerializeField] int bayas = 6;
+    [SerializeField] TMP_Text bayasText = default;
+    [SerializeField] TMP_Text hidrogenoText = default;
+    [SerializeField] TMP_Text azufreText = default;
+    [SerializeField] TMP_Text metalText = default;
+    [SerializeField] TMP_Text semillaText = default;
 
-    private int hidrogeno = 0;
-    private int metal = 0;
-    private int azufre = 0;
-    private int bayas = 6;
+    private int currentHidrogeno = 0;
+    private int currentMetal = 0;
+    private int currentAzufre = 0;
+    private int currentBayas = 6;
     private int semillas = 50;
+
+    private int currentSemillas = 50;
 
     private int maxItems = 5;
 
@@ -38,65 +50,144 @@ public class InventoryManager : MonoBehaviour
 
     public void TakeMetal()
     {
-        if(metal < maxItems)
+        if(currentMetal < maxItems)
         {
-            metal++;
+            currentMetal++;
+            metalText.text = currentMetal + "/" + maxItems;
         }
     }
 
-    public void UseMetal()
+    public int UseMetalInShip(int life)
     {
-        if(metal > 0)
+        int amoun = 0;
+
+        for(int i = currentMetal; i > 0; i--)
         {
-            metal--;
+            currentMetal--;
+            metalText.text = currentMetal + "/" + maxItems;
+            amoun++;
+            
+            if(amoun + life == 5)
+            {
+                break;
+            }
         }
+
+        return amoun;
+
+        //if(currentMetal > 0)
+        //{
+        //    currentMetal--;
+        //}
+    }
+
+    public bool IsEnoughMetal()
+    {
+        if (currentMetal > 0)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     public void TakeHidrogeno()
     {
-        if(hidrogeno < maxItems)
+        if(currentHidrogeno < maxItems)
         {
-            hidrogeno++;
+            currentHidrogeno++;
+            hidrogenoText.text = currentHidrogeno + "/" + maxItems;
         }
     }
 
-    public void UseHidrogeno()
-    {
-        if (hidrogeno > 0)
-        {
-            hidrogeno--;
-        }
-    }
+    //public void UseHidrogeno()
+    //{
+    //    if (currentHidrogeno > 0)
+    //    {
+    //        currentHidrogeno--;
+    //    }
+    //}
 
     public void TakeAzufre()
     {
-        if(azufre < maxItems)
+        if(currentAzufre < maxItems)
         {
-            azufre++;
+            currentAzufre++;
+            azufreText.text = currentAzufre + "/" + maxItems;
         }
     }
 
-    public void UseAzufre()
+    //public void UseAzufre()
+    //{
+    //    if (currentAzufre > 0)
+    //    {
+    //        currentAzufre--;
+    //    }
+    //}
+
+    public int UseFuelInShip(int fuel)
     {
-        if (azufre > 0)
+        //int amount = currentAzufre - currentHidrogeno;
+        int amount = 0;
+
+        for(int i = currentAzufre; i > 0; i--)
         {
-            azufre--;
+            currentAzufre--;
+            azufreText.text = currentAzufre + "/" + maxItems;
+
+            for (int j = 0; i > 0; j--)
+            {
+                currentHidrogeno--;
+
+                amount++;
+
+                if(currentHidrogeno <= 0)
+                {
+                    break;
+                }
+                else if(amount + fuel == 5)
+                {
+                    break;
+                }
+            }
         }
+
+        return amount;
     }
 
-    public void EatBaya()
+    public bool IsEnoughAzufreAndHidrogeno()
     {
-        if(bayas < maxItems)
+        if (currentAzufre > 0 && currentHidrogeno > 0)
         {
-            bayas++;
+            return true;
         }
+
+        return false;
+    }
+
+    public bool EatBaya()
+    {
+        if(currentBayas < bayas)
+        {
+            currentBayas++;
+            bayasText.text = currentBayas + "/" + maxItems;
+            return true;
+        }
+
+        return false;
     }
 
     public void MinusBaya()
     {
-        if(bayas > 0)
+        currentBayas--;
+
+        if (currentBayas > 0)
         {
-            bayas--;
+            bayasText.text = currentBayas + "/" + maxItems;
+        }
+        else if(currentBayas <= 0)
+        {
+            //Muerte
         }
     }
 
@@ -104,7 +195,8 @@ public class InventoryManager : MonoBehaviour
     {
         if(semillas > 0)
         {
-            semillas--;
+            currentSemillas--;
+            semillaText.text = currentSemillas + "/" + semillas;
         }
     }
 

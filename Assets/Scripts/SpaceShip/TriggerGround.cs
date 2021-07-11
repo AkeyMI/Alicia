@@ -17,6 +17,8 @@ public class TriggerGround : MonoBehaviour
         {
             spaceShip.IsOnGround(true);
             FindObjectOfType<PalancaNave>().ResetPalanca();
+            SpaceShipManager.Instance.Damage(Random.Range(1, 4));
+            SpaceShipManager.Instance.FuelUse(Random.Range(1, 4));
         }
     }
 

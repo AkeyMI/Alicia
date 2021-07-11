@@ -21,8 +21,6 @@ public class HidrogenoItem : MonoBehaviour, IInteractable
     public void OneUse()
     {
         currentUsos++;
-        //hidrogenoSlider.value = currentUsos;
-        //Debug.Log(currentUsos);
 
         if (currentUsos >= usos)
         {

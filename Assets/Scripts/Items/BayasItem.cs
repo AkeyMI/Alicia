@@ -12,10 +12,16 @@ public class BayasItem : MonoBehaviour, IInteractable
     public void Apply()
     {
         //Debug.Log("Se uso item");
-        InventoryManager.Instance.EatBaya();
 
-        tierraItem.RespwanBaya();
-        this.gameObject.SetActive(false);
+        if(InventoryManager.Instance.EatBaya())
+        {
+            tierraItem.RespwanBaya();
+            this.gameObject.SetActive(false);
+        }
+        //InventoryManager.Instance.EatBaya();
+
+        //tierraItem.RespwanBaya();
+        //this.gameObject.SetActive(false);
     }
 
     public void OneUse()
@@ -26,6 +32,7 @@ public class BayasItem : MonoBehaviour, IInteractable
         if (currentUsos >= usos)
         {
             Apply();
+            currentUsos = 0;
         }
     }
 }

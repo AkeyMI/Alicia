@@ -21,8 +21,6 @@ public class MetalItem : MonoBehaviour, IInteractable
     public void OneUse()
     {
         currentUsos++;
-        //metalSlider.value = currentUsos;
-        //Debug.Log(currentUsos);
 
         if(currentUsos >= usos)
         {

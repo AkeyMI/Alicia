@@ -16,6 +16,7 @@ public class TriggerGround : MonoBehaviour
         if (other.CompareTag("Ground"))
         {
             spaceShip.IsOnGround(true);
+            FindObjectOfType<PalancaNave>().ResetPalanca();
         }
     }
 

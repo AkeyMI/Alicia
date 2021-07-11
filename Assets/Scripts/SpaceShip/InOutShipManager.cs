@@ -8,6 +8,7 @@ public class InOutShipManager : MonoBehaviour
     [SerializeField] float shipMinimumClose = 1f;
     [SerializeField] Button goOutShipButton = default;
     [SerializeField] Button goInShipButton = default;
+    [SerializeField] Slider palanca = default;
 
     public bool IsAliceOut => isAliceOut;
 
@@ -70,6 +71,15 @@ public class InOutShipManager : MonoBehaviour
         else
         {
             btnGoIn.gameObject.SetActive(false);
+        }
+
+        if(!isAliceOut)
+        {
+            palanca.gameObject.SetActive(true);
+        }
+        else
+        {
+            palanca.gameObject.SetActive(false);
         }
     }
 

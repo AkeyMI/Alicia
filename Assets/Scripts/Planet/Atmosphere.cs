@@ -24,6 +24,7 @@ public class Atmosphere : MonoBehaviour
         if(other.CompareTag("SpaceShip"))
         {
             GravityManager.Instance.SetZeroGravity();
+            FindObjectOfType<PalancaNave>().ResetPalanca();
         }
     }
 }

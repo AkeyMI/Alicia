@@ -96,4 +96,12 @@ public class InventoryManager : MonoBehaviour
             bayas--;
         }
     }
+
+    public void UseSemilla()
+    {
+        if(semillas > 0)
+        {
+            semillas--;
+        }
+    }
 }

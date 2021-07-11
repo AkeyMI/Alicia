@@ -2,20 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BayasItem : MonoBehaviour, IInteractable
+public class FiltroItem : MonoBehaviour, IInteractable
 {
     [SerializeField] int usos = 1;
-    [SerializeField] TierraItem tierraItem = default;
+    [SerializeField] float segundosParaRecolectarInformacion = 1f;
 
     private int currentUsos = 0;
 
     public void Apply()
     {
         //Debug.Log("Se uso item");
-        InventoryManager.Instance.EatBaya();
+        InventoryManager.Instance.TakeMetal();
 
-        tierraItem.RespwanBaya();
-        this.gameObject.SetActive(false);
+        //Destroy(this.gameObject);
+
+        StartCoroutine(CheckAir());
     }
 
     public void OneUse()
@@ -27,5 +28,12 @@ public class BayasItem : MonoBehaviour, IInteractable
         {
             Apply();
         }
+    }
+
+    IEnumerator CheckAir()
+    {
+        yield return new WaitForSeconds(segundosParaRecolectarInformacion);
+
+
     }
 }

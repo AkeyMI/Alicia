@@ -5,15 +5,20 @@ using UnityEngine;
 
 public class SpaceShipController : MonoBehaviour
 {
-    [SerializeField] float thrusterForce = 10f;
+    [SerializeField] float thrusterForce = 0f;
+    [SerializeField] float thrusterForceNegative = 0f;
     [SerializeField] float tiltingForce = 10f;
+    [SerializeField] float limitVelocity = 5f;
     [SerializeField] GameObject alice = default;
     [SerializeField] GameObject spawnAlice = default;
 
     private Vector3 rotationInput;
     private Vector3 rotationVelocity;
 
+    private float currentThrusterForce;
+
     private bool shipOnGround = false;
+    private bool shipDesaccelerate = false;
 
     public bool ShipOnGround => shipOnGround;
 
@@ -46,15 +51,23 @@ public class SpaceShipController : MonoBehaviour
     {
         if (!InOutShipManager.Instance.IsAliceOut)
         {
-            if (Input.GetKey(KeyCode.U))
-            {
-                UpForce();
-            }
+            //if (Input.GetKey(KeyCode.U))
+            //{
+            //    UpForce();
+            //}
 
-            if (Input.GetKey(KeyCode.J))
-            {
-                DownForce();
-            }
+            //if (Input.GetKey(KeyCode.J))
+            //{
+            //    DownForce();
+            //}
+
+            UpForce();
+            DownForce();
+
+            //if (shipDesaccelerate)
+            //{
+            //    ForceDesaccelerate();
+            //}
         }
     }
 
@@ -89,12 +102,31 @@ public class SpaceShipController : MonoBehaviour
 
     private void UpForce()
     {
-        rb.AddRelativeForce(Vector3.up * thrusterForce * Time.deltaTime);
+        //rb.AddRelativeForce(Vector3.up * currentThrusterForce * Time.deltaTime);
+        if(GravityManager.Instance.IsOnPLanet)
+        {
+            rb.AddRelativeForce(Vector3.up * currentThrusterForce * Time.deltaTime);
+        }
+        else if(rb.velocity.y < limitVelocity && rb.velocity.y > -limitVelocity && rb.velocity.x < limitVelocity && rb.velocity.x > -limitVelocity && rb.velocity.z < limitVelocity && rb.velocity.z > -limitVelocity)
+        {
+            rb.AddRelativeForce(Vector3.up * currentThrusterForce * Time.deltaTime);
+        } 
     }
 
     private void DownForce()
     {
-        rb.AddRelativeForce(-Vector3.up * thrusterForce * Time.deltaTime);
+        rb.AddRelativeForce(-Vector3.up * thrusterForceNegative * Time.deltaTime);
+    }
+
+    public void ShipForce(float value)
+    {
+        //thrusterForce = value;
+        currentThrusterForce = value;
+    }
+
+    public void ShipForceNegative(float value)
+    {
+        thrusterForceNegative = value;
     }
 
     private void FeetOnTheGround()
@@ -105,5 +137,42 @@ public class SpaceShipController : MonoBehaviour
     public void IsOnGround(bool ground)
     {
         shipOnGround = ground;
+    }
+
+    public void TurnOnContrains()
+    {
+        shipDesaccelerate = true;
+
+        StartCoroutine(Desaccelerate());
+
+        //rb.constraints = RigidbodyConstraints.FreezePosition;
+        //rb.freezeRotation = true;
+    }
+
+    public void TurnOffContrains()
+    {
+        shipDesaccelerate = false;
+
+        rb.constraints = RigidbodyConstraints.None;
+        rb.freezeRotation = true;
+    }
+
+    IEnumerator Desaccelerate()
+    {
+        yield return new WaitForSeconds(1);
+
+        rb.constraints = RigidbodyConstraints.FreezePosition;
+        rb.freezeRotation = true;
+    }
+
+    private void ForceDesaccelerate()
+    {
+        currentThrusterForce -= Time.deltaTime * 0.2f;
+
+        if(currentThrusterForce <= 0)
+        {
+            rb.constraints = RigidbodyConstraints.FreezePosition;
+            rb.freezeRotation = true;
+        }
     }
 }

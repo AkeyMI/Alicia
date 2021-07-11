@@ -88,6 +88,7 @@ public class InOutShipManager : MonoBehaviour
         isAliceOut = true;
 
         spaceShip.GoOut();
+        CameraManager.Instance.ChangeCameraShipAndAlice();
 
         btnGoOut.gameObject.SetActive(false);
     }
@@ -96,6 +97,7 @@ public class InOutShipManager : MonoBehaviour
     {
         isAliceOut = false;
 
+        CameraManager.Instance.ChangeCameraShipAndAlice();
         FindObjectOfType<CharacterControler>().GoIn();
 
         spaceShip.ResetConstraints();

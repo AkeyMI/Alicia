@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -11,6 +12,7 @@ public class SpaceShipController : MonoBehaviour
     [SerializeField] float limitVelocity = 5f;
     [SerializeField] GameObject alice = default;
     [SerializeField] GameObject spawnAlice = default;
+    [SerializeField] GameObject spaceShipPreffab = default;
 
     private Vector3 rotationInput;
     private Vector3 rotationVelocity;
@@ -163,6 +165,19 @@ public class SpaceShipController : MonoBehaviour
 
         rb.constraints = RigidbodyConstraints.FreezePosition;
         rb.freezeRotation = true;
+    }
+
+    public void RotateShipInAtmosphere()
+    {
+        //spaceShipPreffab.transform.DORotate(new Vector3(0f, -90f, 0f), 1f, RotateMode.Fast);
+        if(!InOutShipManager.Instance.IsAliceOut)
+            spaceShipPreffab.transform.rotation = Quaternion.FromToRotation(transform.up, -Physics.gravity) * transform.rotation;
+    }
+
+    public void RotateShipOutAmosphere()
+    {
+        //spaceShipPreffab.transform.DORotate(new Vector3(0f, -90f, 90f), 1f, RotateMode.Fast);
+        spaceShipPreffab.transform.localEulerAngles = new Vector3(0f, -90f, 90);
     }
 
     private void ForceDesaccelerate()

@@ -11,6 +11,8 @@ public class Atmosphere : MonoBehaviour
         if(other.CompareTag("SpaceShip"))
         {
             GravityManager.Instance.SetGravity(this.gameObject, other.gameObject);
+            FindObjectOfType<SpaceShipController>().RotateShipInAtmosphere();
+            CameraManager.Instance.SwitchPriotiry();
         }
 
         if(other.CompareTag("Player"))
@@ -23,8 +25,10 @@ public class Atmosphere : MonoBehaviour
     {
         if(other.CompareTag("SpaceShip"))
         {
+            CameraManager.Instance.SwitchPriotiry();
             GravityManager.Instance.SetZeroGravity();
             FindObjectOfType<PalancaNave>().ResetPalanca();
+            FindObjectOfType<SpaceShipController>().RotateShipOutAmosphere();
         }
     }
 }

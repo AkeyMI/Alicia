@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
+    [SerializeField] Slider slider = default;
+
     private int hidrogeno = 0;
     private int metal = 0;
     private int azufre = 0;
@@ -103,5 +106,10 @@ public class InventoryManager : MonoBehaviour
         {
             semillas--;
         }
+    }
+
+    public void ChangeSlider()
+    {
+
     }
 }

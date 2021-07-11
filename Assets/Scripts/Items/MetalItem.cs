@@ -15,16 +15,24 @@ public class MetalItem : MonoBehaviour, IInteractable
         //Debug.Log("Se uso item");
         InventoryManager.Instance.TakeMetal();
 
-        Destroy(this.gameObject);
+        //Destroy(this.gameObject);
+    }
+
+    public int CurrentUsos()
+    {
+        return currentUsos;
     }
 
     public void OneUse()
     {
         currentUsos++;
+        FindObjectOfType<SliderManager>().AddSliderValue(currentUsos);
 
         if(currentUsos >= usos)
         {
             Apply();
+            currentUsos = 0;
+            //FindObjectOfType<SliderManager>().AddSliderValue(currentUsos);
         }
     }
 }

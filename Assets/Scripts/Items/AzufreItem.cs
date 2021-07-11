@@ -14,16 +14,23 @@ public class AzufreItem : MonoBehaviour, IInteractable
     {
         InventoryManager.Instance.TakeAzufre();
 
-        Destroy(this.gameObject);
+        //Destroy(this.gameObject);
+    }
+
+    public int CurrentUsos()
+    {
+        return currentUsos;
     }
 
     public void OneUse()
     {
         currentUsos++;
+        FindObjectOfType<SliderManager>().AddSliderValue(currentUsos);
 
         if (currentUsos >= usos)
         {
             Apply();
+            currentUsos = 0;
         }
     }
 }

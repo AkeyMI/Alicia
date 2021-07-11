@@ -20,35 +20,38 @@ public class PalancaNave : MonoBehaviour
 
     public void OnSliderChanged(float value)
     {
-        switch(value)
+        if (SpaceShipManager.Instance.HaveFuel)
         {
-            case 1:
-                //Debug.Log("Velocidad de 1");
-                spaceShip.TurnOffContrains();
-                spaceShip.ShipForce(thrusterForce / 3);
-                PlayAudio();
-                break;
+            switch (value)
+            {
+                case 1:
+                    //Debug.Log("Velocidad de 1");
+                    spaceShip.TurnOffContrains();
+                    spaceShip.ShipForce(thrusterForce / 3);
+                    PlayAudio();
+                    break;
 
-            case 2:
-                //Debug.Log("Velocidad de 2");
-                spaceShip.TurnOffContrains();
-                spaceShip.ShipForce(thrusterForce / 2);
-                PlayAudio();
-                break;
+                case 2:
+                    //Debug.Log("Velocidad de 2");
+                    spaceShip.TurnOffContrains();
+                    spaceShip.ShipForce(thrusterForce / 2);
+                    PlayAudio();
+                    break;
 
-            case 3:
-                spaceShip.TurnOffContrains();
-                spaceShip.ShipForce(thrusterForce / 1);
-                PlayAudio();
-                break;
+                case 3:
+                    spaceShip.TurnOffContrains();
+                    spaceShip.ShipForce(thrusterForce / 1);
+                    PlayAudio();
+                    break;
 
-            case 0:
-                spaceShip.ShipForce(0);
-                spaceShip.ShipForceNegative(0);
-                spaceShip.TurnOnContrains();
-                fly.Stop();
-                isPlaying = false;
-                break;
+                case 0:
+                    spaceShip.ShipForce(0);
+                    spaceShip.ShipForceNegative(0);
+                    spaceShip.TurnOnContrains();
+                    fly.Stop();
+                    isPlaying = false;
+                    break;
+            }
         }
     }
 

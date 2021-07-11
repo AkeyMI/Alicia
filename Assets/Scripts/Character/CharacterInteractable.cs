@@ -13,6 +13,8 @@ public class CharacterInteractable : MonoBehaviour
             CheckInteractablesItems();
             //Random.Range(0, 1);
         }
+
+        //CheckInteractablesItemsForSlider();
     }
 
     private void CheckInteractablesItems()
@@ -33,4 +35,17 @@ public class CharacterInteractable : MonoBehaviour
             }
         }
     }
+
+    //private void CheckInteractablesItemsForSlider()
+    //{
+    //    Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, radius);
+
+    //    foreach(var hitCollider in hitColliders)
+    //    {
+    //        if(hitCollider.CompareTag("Item"))
+    //        {
+    //            FindObjectOfType<SliderManager>().TurnOnSlider();
+    //        }
+    //    }
+    //}
 }

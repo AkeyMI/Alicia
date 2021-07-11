@@ -7,4 +7,6 @@ public interface IInteractable
     void Apply();
 
     void OneUse();
+
+    int CurrentUsos();
 }

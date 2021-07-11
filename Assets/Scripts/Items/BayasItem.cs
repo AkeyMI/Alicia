@@ -24,6 +24,11 @@ public class BayasItem : MonoBehaviour, IInteractable
         //this.gameObject.SetActive(false);
     }
 
+    public int CurrentUsos()
+    {
+        throw new System.NotImplementedException();
+    }
+
     public void OneUse()
     {
         currentUsos++;

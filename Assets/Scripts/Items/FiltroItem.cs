@@ -21,6 +21,11 @@ public class FiltroItem : MonoBehaviour, IInteractable
         StartCoroutine(CheckAir());
     }
 
+    public int CurrentUsos()
+    {
+        throw new System.NotImplementedException();
+    }
+
     public void OneUse()
     {
         currentUsos++;

@@ -14,6 +14,8 @@ public class SpaceShipManager : MonoBehaviour
     private int currentFuel;
     private int currentLife;
 
+    public bool HaveFuel => haveFuel;
+
     private bool haveFuel = true;
 
     public static SpaceShipManager Instance;
@@ -39,7 +41,7 @@ public class SpaceShipManager : MonoBehaviour
     private void Start()
     {
         currentFuel = 1;
-        currentLife = 3;
+        currentLife = life;
 
         fuelAmountText.text = currentFuel + "/" + fuel;
         lifeAmountText.text = currentLife + "/" + life;
@@ -62,6 +64,7 @@ public class SpaceShipManager : MonoBehaviour
         else if(currentLife <= 0)
         {
             //Muerte sceneManager
+            FindObjectOfType<WinManager>().GameOver();
         }
     }
 
@@ -90,10 +93,14 @@ public class SpaceShipManager : MonoBehaviour
         if(currentFuel > 0)
         {
             fuelAmountText.text = currentFuel + "/" + fuel;
+            //Debug.Log("Tiene Combustible");
         }
         else if(currentFuel <= 0)
         {
             //No Mover
+            currentFuel = 0;
+            //Debug.Log("No tiene combustible");
+            fuelAmountText.text = currentFuel + "/" + fuel;
             Damage(1);
             haveFuel = false;
         }

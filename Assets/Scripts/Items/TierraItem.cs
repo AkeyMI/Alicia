@@ -21,6 +21,11 @@ public class TierraItem : MonoBehaviour, IInteractable
         StartCoroutine(ActivateArbusto());
     }
 
+    public int CurrentUsos()
+    {
+        throw new System.NotImplementedException();
+    }
+
     public void OneUse()
     {
         currentUsos++;

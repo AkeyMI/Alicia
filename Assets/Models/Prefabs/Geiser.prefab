@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 3034166871797821641}
   - component: {fileID: 2140438136147902316}
   - component: {fileID: 4202045837915425702}
+  - component: {fileID: 5546777670414712558}
+  - component: {fileID: 3230981882735893184}
   m_Layer: 0
   m_Name: Geiser
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,6 +84,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5546777670414712558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2400513284688325235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbd51e00577d320468e936e57fbc64b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  usos: 3
+--- !u!136 &3230981882735893184
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2400513284688325235}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.29298335
+  m_Height: 0.77763695
+  m_Direction: 1
+  m_Center: {x: 0.0016593082, y: 0.08152962, z: 0.0019711682}
 --- !u!1 &2884526977712681029
 GameObject:
   m_ObjectHideFlags: 0

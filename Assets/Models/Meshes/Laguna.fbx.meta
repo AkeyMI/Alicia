@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5233bcabf27c0674fa525fccc1793165
+guid: 69ce61a06bd03a44492745b6f335c623
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -7,13 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: M_Bayas
-    second: {fileID: 2100000, guid: 907a7a22894cd0849893817b38366fef, type: 2}
+      name: M_Agua
+    second: {fileID: 2100000, guid: af5a610a836298e4fadff8520ee618db, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: M_Planta
-    second: {fileID: 2100000, guid: a2d40f8dcfce7ed47a0968b90ba8d38b, type: 2}
+      name: M_Tierra
+    second: {fileID: 2100000, guid: 47daf1a2975324947ac5302b8fd545fb, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -44,7 +44,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 3
+    globalScale: 6
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -95,7 +95,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.03
+    globalScale: 6
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

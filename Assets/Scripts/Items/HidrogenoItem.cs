@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class HidrogenoItem : MonoBehaviour, IInteractable
 {
     [SerializeField] int usos = 3;
+    [SerializeField] AudioSource hidrogeno = default;
+    [SerializeField] AudioSource bubble = default;
 
     private int currentUsos = 0;
 
@@ -13,6 +15,7 @@ public class HidrogenoItem : MonoBehaviour, IInteractable
     {
         //Debug.Log("Se uso item");
         InventoryManager.Instance.TakeHidrogeno();
+        hidrogeno.Play();
 
         //Destroy(this.gameObject);
     }
@@ -21,6 +24,7 @@ public class HidrogenoItem : MonoBehaviour, IInteractable
     {
         currentUsos++;
         FindObjectOfType<SliderManager>().AddSliderValue(currentUsos);
+        bubble.Play();
 
         if (currentUsos >= usos)
         {

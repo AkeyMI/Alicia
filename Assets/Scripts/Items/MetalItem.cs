@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class MetalItem : MonoBehaviour, IInteractable
 {
     [SerializeField] int usos = 3;
+    [SerializeField] AudioSource hammer = default;
+    [SerializeField] AudioSource hammerFinal = default;
     //[SerializeField] Slider metalSlider = default;
 
     private int currentUsos = 0;
@@ -14,6 +16,7 @@ public class MetalItem : MonoBehaviour, IInteractable
     {
         //Debug.Log("Se uso item");
         InventoryManager.Instance.TakeMetal();
+        hammerFinal.Play();
 
         //Destroy(this.gameObject);
     }
@@ -27,6 +30,7 @@ public class MetalItem : MonoBehaviour, IInteractable
     {
         currentUsos++;
         FindObjectOfType<SliderManager>().AddSliderValue(currentUsos);
+        hammer.Play();
 
         if(currentUsos >= usos)
         {

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a13b42dc183115f4a90c7a8ce9a9b9f2
+guid: 5233bcabf27c0674fa525fccc1793165
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -7,13 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Agua
-    second: {fileID: 2100000, guid: 0199400cda6daef439d834c5068af282, type: 2}
+      name: M_Bayas
+    second: {fileID: 2100000, guid: 907a7a22894cd0849893817b38366fef, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Botella
-    second: {fileID: 2100000, guid: 5642ac77e9498a04cb992495a50bc01d, type: 2}
+      name: M_Planta
+    second: {fileID: 2100000, guid: a2d40f8dcfce7ed47a0968b90ba8d38b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

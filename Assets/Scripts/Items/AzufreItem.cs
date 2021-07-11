@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class AzufreItem : MonoBehaviour, IInteractable
 {
     [SerializeField] int usos = 3;
+    [SerializeField] AudioSource hammer = default;
+    [SerializeField] AudioSource hammerFinal = default;
     //[SerializeField] Slider azufreSlider = default;
 
     private int currentUsos = 0;
@@ -13,6 +15,7 @@ public class AzufreItem : MonoBehaviour, IInteractable
     public void Apply()
     {
         InventoryManager.Instance.TakeAzufre();
+        hammerFinal.Play();
 
         //Destroy(this.gameObject);
     }
@@ -26,6 +29,7 @@ public class AzufreItem : MonoBehaviour, IInteractable
     {
         currentUsos++;
         FindObjectOfType<SliderManager>().AddSliderValue(currentUsos);
+        hammer.Play();
 
         if (currentUsos >= usos)
         {

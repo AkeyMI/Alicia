@@ -59,16 +59,6 @@ public class MenuManager : MonoBehaviour
 
     public void NextPage()
     {
-
-        //lastPage.gameObject.SetActive(true);
-
-        //pages[currentPage].SetActive(false);
-
-        //currentPage++;
-
-        //pages[currentPage].SetActive(true);
-
-
         if(currentPage + 1 <= pages.Length)
         {
             lastPage.gameObject.SetActive(true);
@@ -85,26 +75,10 @@ public class MenuManager : MonoBehaviour
             }
         }
 
-
-        //if (currentPage + 2 > pages.Length)
-        //{
-        //    nextPage.gameObject.SetActive(false);
-        //}
-        //else
-        //{
-        //    pages[currentPage].SetActive(true);
-        //}
-
-
-        //if(currentPage > pages.Length)
-        //{
-        //    nextPage.gameObject.SetActive(false);
-        //}
     }
 
     public void LastPage()
     {
-
         if (currentPage - 1 >= 0)
         {
             nextPage.gameObject.SetActive(true);
@@ -115,31 +89,10 @@ public class MenuManager : MonoBehaviour
 
             pages[currentPage].SetActive(true);
 
-            if (currentPage - 2 < 0)
+            if (currentPage - 1 < 0)
             {
                 lastPage.gameObject.SetActive(false);
             }
         }
-
-        //nextPage.gameObject.SetActive(true);
-
-        //pages[currentPage].SetActive(false);
-
-        //currentPage--;
-
-        //if (currentPage - 1 < pages.Length)
-        //{
-        //    lastPage.gameObject.SetActive(false);
-        //}
-        //else
-        //{
-        //    pages[currentPage].SetActive(true);
-        //}
-
-
-        //if (currentPage < pages.Length)
-        //{
-        //    lastPage.gameObject.SetActive(false);
-        //}
     }
 }

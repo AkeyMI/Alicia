@@ -14,16 +14,16 @@ public class FiltroItem : MonoBehaviour, IInteractable
     public void Apply()
     {
         //Debug.Log("Se uso item");
-        
 
+        FindObjectOfType<WinManager>().Win();
         //Destroy(this.gameObject);
 
-        StartCoroutine(CheckAir());
+        //StartCoroutine(CheckAir());
     }
 
     public int CurrentUsos()
     {
-        throw new System.NotImplementedException();
+        return 0;
     }
 
     public void OneUse()

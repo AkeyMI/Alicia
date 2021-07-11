@@ -26,7 +26,7 @@ public class BayasItem : MonoBehaviour, IInteractable
 
     public int CurrentUsos()
     {
-        throw new System.NotImplementedException();
+        return 0;
     }
 
     public void OneUse()

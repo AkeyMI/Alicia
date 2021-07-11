@@ -14,6 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   usos: 1
   tierraItem: {fileID: 7550042370172347872}
+--- !u!135 &264322247758543826
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132250657909234284}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.048638023
+  m_Center: {x: -0.0000000018626451, y: 0, z: -0.0000000018626451}
 --- !u!1 &1436272149249068820
 GameObject:
   m_ObjectHideFlags: 0
@@ -29,7 +42,7 @@ GameObject:
   - component: {fileID: 7550042370172347872}
   m_Layer: 0
   m_Name: Tierra
-  m_TagString: Item
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5106,7 +5119,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5233bcabf27c0674fa525fccc1793165, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297083384220129162, guid: 5233bcabf27c0674fa525fccc1793165, type: 3}
+      propertyPath: m_TagString
+      value: Item
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5233bcabf27c0674fa525fccc1793165, type: 3}

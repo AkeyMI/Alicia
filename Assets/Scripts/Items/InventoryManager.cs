@@ -27,6 +27,10 @@ public class InventoryManager : MonoBehaviour
 
     private int maxItems = 5;
 
+    public bool CanTakeItems => canTakeItems;
+
+    private bool canTakeItems = true;
+
     public static InventoryManager Instance;
 
     private void Awake()
@@ -139,29 +143,93 @@ public class InventoryManager : MonoBehaviour
         //int amount = currentAzufre - currentHidrogeno;
         int amount = 0;
 
-        for(int i = currentAzufre; i > 0; i--)
+        if(currentAzufre < currentHidrogeno)
         {
-            currentAzufre--;
-            azufreText.text = currentAzufre + "/" + maxItems;
-
-            for (int j = 0; i > 0; j--)
+            for(int i = currentAzufre; i > 0; i--)
             {
-                currentHidrogeno--;
-
                 amount++;
+                currentAzufre -= amount;
+                currentHidrogeno -= amount;
 
-                if(currentHidrogeno <= 0)
+                if (amount + fuel == 5)
                 {
-                    break;
+                    //currentAzufre -= amount;
+                    //currentHidrogeno -= amount;
+                    azufreText.text = currentAzufre + "/" + maxItems;
+                    hidrogenoText.text = currentHidrogeno + "/" + maxItems;
+                    //break;
+                    return amount;
                 }
-                else if(amount + fuel == 5)
+            }
+        }
+        else if(currentHidrogeno < currentAzufre)
+        {
+            for (int i = currentHidrogeno; i > 0; i--)
+            {
+                amount++;
+                currentAzufre -= amount;
+                currentHidrogeno -= amount;
+
+                if (amount + fuel == 5)
                 {
-                    break;
+                    //currentAzufre -= amount;
+                    //currentHidrogeno -= amount;
+                    azufreText.text = currentAzufre + "/" + maxItems;
+                    hidrogenoText.text = currentHidrogeno + "/" + maxItems;
+                    //break;
+                    return amount;
+                }
+            }
+        }
+        else if(currentAzufre == currentHidrogeno)
+        {
+            for (int i = currentHidrogeno; i > 0; i--)
+            {
+                amount++;
+                currentAzufre -= amount;
+                currentHidrogeno -= amount;
+
+                if (amount + fuel == 5)
+                {
+                    //currentAzufre -= amount;
+                    //currentHidrogeno -= amount;
+                    azufreText.text = currentAzufre + "/" + maxItems;
+                    hidrogenoText.text = currentHidrogeno + "/" + maxItems;
+                    //break;
+                    return amount;
                 }
             }
         }
 
+        azufreText.text = currentAzufre + "/" + maxItems;
+        hidrogenoText.text = currentHidrogeno + "/" + maxItems;
+
         return amount;
+
+        //return amount;
+
+        //for(int i = currentAzufre; i > 0; i--)
+        //{
+        //    currentAzufre--;
+        //    azufreText.text = currentAzufre + "/" + maxItems;
+
+        //    for (int j = 0; j > 0; j--)
+        //    {
+        //        currentHidrogeno--;
+
+        //        amount++;
+
+        //        if(currentHidrogeno <= 0)
+        //        {
+        //            break;
+        //        }
+        //        else if(amount + fuel == 5)
+        //        {
+        //            break;
+        //        }
+        //    }
+        //}
+
     }
 
     public bool IsEnoughAzufreAndHidrogeno()
@@ -179,7 +247,8 @@ public class InventoryManager : MonoBehaviour
         if(currentBayas < bayas)
         {
             currentBayas++;
-            bayasText.text = currentBayas + "/" + maxItems;
+            bayasText.text = currentBayas + "/" + bayas;
+            canTakeItems = true;
             return true;
         }
 
@@ -192,11 +261,14 @@ public class InventoryManager : MonoBehaviour
 
         if (currentBayas > 0)
         {
-            bayasText.text = currentBayas + "/" + maxItems;
+            bayasText.text = currentBayas + "/" + bayas;
         }
         else if(currentBayas <= 0)
         {
             //Muerte
+            currentBayas = 0;
+            bayasText.text = currentBayas + "/" + bayas;
+            canTakeItems = false;
         }
     }
 

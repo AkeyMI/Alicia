@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!135 &264322247758543826
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132250657909234284}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.048638023
+  m_Center: {x: -0.0000000018626451, y: 0, z: -0.0000000018626451}
 --- !u!114 &2026882837946956061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14,19 +27,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   usos: 1
   tierraItem: {fileID: 7550042370172347872}
---- !u!135 &264322247758543826
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1132250657909234284}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.048638023
-  m_Center: {x: -0.0000000018626451, y: 0, z: -0.0000000018626451}
 --- !u!1 &1436272149249068820
 GameObject:
   m_ObjectHideFlags: 0
@@ -5123,7 +5123,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4297083384220129162, guid: 5233bcabf27c0674fa525fccc1793165, type: 3}
       propertyPath: m_TagString
-      value: Item
+      value: Bayas
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5233bcabf27c0674fa525fccc1793165, type: 3}

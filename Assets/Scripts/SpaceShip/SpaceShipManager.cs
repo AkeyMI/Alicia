@@ -112,10 +112,13 @@ public class SpaceShipManager : MonoBehaviour
         {
             if (InventoryManager.Instance.IsEnoughAzufreAndHidrogeno())
             {
-                currentFuel += InventoryManager.Instance.UseFuelInShip(currentFuel);
+                int i = InventoryManager.Instance.UseFuelInShip(currentFuel);
+                currentFuel += i;
             }
+            Debug.Log(currentFuel);
+            //currentFuel = fuel;
 
-            lifeAmountText.text = currentLife + "/" + life;
+            fuelAmountText.text = currentLife + "/" + life;
 
             if (currentFuel > 0)
             {

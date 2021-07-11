@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 7882532fc5bdd8b4990ba17f66933cc7
   - enabled: 1
-    path: Assets/Scenes/Raul_Planet.unity
-    guid: cdf2ce97d9571af459e94e357580fc9f
+    path: Assets/Scenes/Gameplay.unity
+    guid: a71dda8f8d7556749ab10f9004998938
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 8698b903532c15b40bb4c518cb4413a3

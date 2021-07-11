@@ -26,11 +26,17 @@ public class CharacterInteractable : MonoBehaviour
             if (hitCollider.CompareTag("Item"))
             {
                 Debug.Log("Entro");
+                if (InventoryManager.Instance.CanTakeItems)
+                {
+                    int useOrNot = Random.Range(0, 2);
+                    if (useOrNot > 0)
+                        InventoryManager.Instance.MinusBaya();
 
-                int useOrNot = Random.Range(0, 2);
-                if(useOrNot > 0)
-                    InventoryManager.Instance.MinusBaya();
-
+                    hitCollider.GetComponent<IInteractable>().OneUse();
+                }
+            }
+            else if(hitCollider.CompareTag("Bayas"))
+            {
                 hitCollider.GetComponent<IInteractable>().OneUse();
             }
         }

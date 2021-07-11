@@ -18,7 +18,8 @@ public class StartManager : MonoBehaviour
 
     public void PressButton()
     {
-        btnStart.image.sprite = buttonOn;
+        //btnStart.image.sprite = buttonOn;
+        imgStart.sprite = buttonOn;
 
         SceneManager.LoadScene(1);
     }
